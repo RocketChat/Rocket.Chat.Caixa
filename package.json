@@ -1,0 +1,16 @@
+{
+	"name": "Rocket.Chat.Livechat.Caixa",
+	"version": "1.0.0",
+	"description": "",
+	"main": "server.js",
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"body-parser": "^1.18.3",
+		"express": "^4.16.3",
+		"jsonwebtoken": "^8.3.0",
+		"jwt-decode": "^2.2.0",
+		"request": "^2.88.0"
+	}
+}
