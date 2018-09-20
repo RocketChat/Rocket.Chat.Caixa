@@ -5,23 +5,23 @@
 Add your application configuration to a `.env` file in the root of your project:
 
 ```shell
-APP_PORT=
-JWT_CLOCK_TOLERANCE=
-JWT_IGNORE_EXPIRATION=
-JWT_ALGORITHMS=
-ROCKETCHAT_URL=
-PAYLOAD_ROOT_DATA=
+APP_PORT=8888
+JWT_CLOCK_TOLERANCE=10
+JWT_IGNORE_EXPIRATION=false
+JWT_ALGORITHMS=['RS256']
+ROCKETCHAT_URL='http://your-own-rocket-chat:3000'
+PAYLOAD_ROOT_DATA='SIPER'
 ```
 
-You may also add `export` in front of each line so you can `source` the file in bash:
+You may also add Environment Variables using the `export` approach:
 
 ```shell
-export APP_PORT=
-export APP_PORT=
-export JWT_IGNORE_EXPIRATION=
-export JWT_ALGORITHMS=
-export ROCKETCHAT_URL=
-export PAYLOAD_ROOT_DATA=
+export APP_PORT=8888
+export JWT_CLOCK_TOLERANCE=10
+export JWT_IGNORE_EXPIRATION=false
+export JWT_ALGORITHMS=['RS256']
+export ROCKETCHAT_URL='http://your-own-rocket-chat:3000'
+export PAYLOAD_ROOT_DATA='SIPER'
 ```
 
 ``` bash
