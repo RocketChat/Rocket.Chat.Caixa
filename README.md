@@ -5,17 +5,23 @@
 Add your application configuration to a `.env` file in the root of your project:
 
 ```shell
-APP_PORT=YOURS3BUCKET
-JWT_CLOCK_TOLERANCE=YOURSECRETKEYGOESHERE
-JWT_IGNORE_EXPIRATION=YOURSECRETKEYGOESHERE
-JWT_ALGORITHMS=YOURSECRETKEYGOESHERE
+APP_PORT=
+JWT_CLOCK_TOLERANCE=
+JWT_IGNORE_EXPIRATION=
+JWT_ALGORITHMS=
+ROCKETCHAT_URL=
+PAYLOAD_ROOT_DATA=
 ```
 
 You may also add `export` in front of each line so you can `source` the file in bash:
 
 ```shell
-export S3_BUCKET=YOURS3BUCKET
-export SECRET_KEY=YOURSECRETKEYGOESHERE
+export APP_PORT=
+export APP_PORT=
+export JWT_IGNORE_EXPIRATION=
+export JWT_ALGORITHMS=
+export ROCKETCHAT_URL=
+export PAYLOAD_ROOT_DATA=
 ```
 
 ``` bash
