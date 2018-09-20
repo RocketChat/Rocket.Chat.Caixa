@@ -32,27 +32,23 @@ npm install
 node server.js
 ```
 
-**Show User**
+** Authenticate a livechat user through a JWT Token **
 ----
-  Returns json data about a single user.
+  Returns the json data about the result of the request.
 
 * **URL**
 
-  /users/:id
+  /api/token
 
 * **Method:**
 
-  `GET`
-  
-*  **URL Params**
+  `POST`
+
+* **Body Params**
 
    **Required:**
- 
-   `id=[integer]`
-
-* **Data Params**
-
-  None
+   
+  `token=a-valid-jwt-decoded`
 
 * **Success Response:**
 
