@@ -57,13 +57,13 @@ node server.js
  
 * **Error Response:**
 
-  * **Code:** 404 NOT FOUND <br />
-    **Content:** `{ error : "User doesn't exist" }`
+  * **Code:** 500 INTERNAL SERVER ERROR <br />
+    **Content:** `{ "success": false, message : "Error validating JWT." }`
 
   OR
 
   * **Code:** 401 UNAUTHORIZED <br />
-    **Content:** `{ error : "You are unauthorized to make this request." }`
+    **Content:** `{ "success": false, message : "Error decoding JWT. Field 'iss' is missing." }`
 
 * **Sample Call:**
 
