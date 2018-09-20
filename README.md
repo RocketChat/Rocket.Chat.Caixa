@@ -1,6 +1,6 @@
 # Rocket.Chat.Livechat.Caixa
 
-## Environment Variables
+## Setting up Environment Variables
 
 ``` bash
 # install dependencies
