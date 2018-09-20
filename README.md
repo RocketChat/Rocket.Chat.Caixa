@@ -53,7 +53,7 @@ node server.js
 * **Success Response:**
 
   * **Code:** 200 <br />
-    **Content:** `{ id : 12, name : "Michael Bloom" }`
+    **Content:** `{ "success": true, "_id": "zmmook48jPiMewb8i", "token": "01074756185" }`
  
 * **Error Response:**
 
