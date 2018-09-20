@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -9,7 +10,7 @@ const livechatProxy = require('./livechatProxy');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-const port = process.env.PORT || 8888;
+const port = process.env.APP_PORT || 8888;
 const clockTolerance = process.env.JWT_CLOCK_TOLERANCE || 10; //value in seconds
 const ignoreExpiration = process.env.JWT_IGNORE_EXPIRATION || false;
 const algorithms = process.env.JWT_ALGORITHMS || ['RS256'];
