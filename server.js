@@ -19,9 +19,12 @@ const router = express.Router();
 function getRequest(url) {
 	return new Promise((resolve, reject) => {
 		request(url, { json: true }, (error, response, body) => {
-			if (error) reject(error);
+			if (error || response === null || response === undefined) {
+				return reject({ success: false, message: 'Request failed. Please check your network connection.' });
+			}
+
 			if (response.statusCode != 200) {
-				reject(JSON.parse(response.body));
+				return reject(JSON.parse(response.body));
 			}
 			resolve(body);
 		});
@@ -42,7 +45,8 @@ async function verifyJWT(req, res, next) {
 	try {
 		body = await getRequest(decoded.iss);
 	} catch (error) {
-		return res.status(500).send({ success: false, message: `Error fetching JWT data.` });
+		const { success, message } = error;
+		return res.status(500).send({ success, message });
 	}
 
 	if (!body.public_key) {
