@@ -63,9 +63,12 @@ const postRequest = (url, data) => {
 			url,
 			body: JSON.stringify(data)
 		}, (error, response, body) => {
-			if (error) reject(error);
+			if (error || response === null || response === undefined) {
+				return reject({ success: false, message: 'Request failed. Please check your network connection.' });
+			}
+
 			if (response.statusCode != 200) {
-				reject(JSON.parse(response.body));
+				return reject(JSON.parse(response.body));
 			}
 			resolve(body);
 		});
