@@ -32,7 +32,11 @@ function getRequest(url) {
 }
 
 async function verifyJWT(req, res, next) {
-	const token = req.body && req.body.token;
+	if (!req.headers.authorization || req.headers.authorization === null) {
+		return res.status(401).send({ success: false, message: 'No token' });
+	}
+
+	const token = req.headers.authorization.replace('Bearer ', '');
 	if (!token) {
 		return res.status(401).send({ success: false, message: 'No token provided.' });
 	}
