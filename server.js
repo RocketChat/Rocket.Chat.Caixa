@@ -32,11 +32,14 @@ function getRequest(url) {
 }
 
 async function verifyJWT(req, res, next) {
+	const token = req.body && req.body.token;
+	/*
 	if (!req.headers.authorization || req.headers.authorization === null) {
 		return res.status(401).send({ success: false, message: 'No token' });
 	}
 
 	const token = req.headers.authorization.replace('Bearer ', '');
+	*/
 	if (!token) {
 		return res.status(401).send({ success: false, message: 'No token provided.' });
 	}
@@ -70,7 +73,7 @@ async function verifyJWT(req, res, next) {
 	next();
 }
 
-router.get('/token/', verifyJWT, (req, res, next) => {
+router.post('/token/', verifyJWT, (req, res, next) => {
 	livechatProxy.authGuest(req.decoded, res);
 });
 
@@ -86,16 +89,11 @@ const allowCrossDomain = (req, res, next) => {
 	res.header('Access-Control-Allow-Credentials', true);
 	res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
 
-	/*
-	// intercept OPTIONS method
 	if ('OPTIONS' == req.method) {
 		res.status(200).send();
-	}
-	else {
+	} else {
 		next();
-	}*/
-
-	next();
+	};
 };
 
 app.use(allowCrossDomain);
