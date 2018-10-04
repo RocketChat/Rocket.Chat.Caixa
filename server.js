@@ -42,6 +42,7 @@ async function verifyJWT(req, res, next) {
 	}
 
 	const decoded = jwtDecode(token);
+
 	if (!decoded.iss) {
 		return res.status(401).send({ success: false, message: `Error decoding JWT. Field 'iss' is missing.` });
 	}
@@ -69,7 +70,7 @@ async function verifyJWT(req, res, next) {
 	next();
 }
 
-router.post('/token/', verifyJWT, (req, res, next) => {
+router.get('/token/', verifyJWT, (req, res, next) => {
 	livechatProxy.authGuest(req.decoded, res);
 });
 
