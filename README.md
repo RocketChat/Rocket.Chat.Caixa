@@ -1,4 +1,4 @@
-# Rocket.Chat.Livechat.Caixa
+# Rocket.Chat.Caixa
 
 ## Setting up Environment Variables
 
