@@ -1,18 +1,18 @@
-const request = require('request');
-const rockechatUrl = process.env.ROCKETCHAT_URL;
-const livechatUrl = `${rockechatUrl}/api/v1/livechat`;
+const { settings } = require('../lib/settings');
+const { requests } = require('../lib/requests');
 const payloadRootData = process.env.PAYLOAD_ROOT_DATA || 'SIPER';
 
 async function authGuest(payload, res) {
-	const body = prepareData(payload);
+	const body = normalizeData(payload);
 	if (!body) {
 		return res.status(500).send({ success: false, message: 'Invalid JWT payload.' });
 	}
 
-	const url = `${livechatUrl}/visitor`;
+	const { livechatApiUrl } = settings;
+	const url = `${livechatApiUrl}/visitor`;
 
 	try {
-		result = await postRequest(url, body);
+		result = await requests.post(url, body);
 		const data = JSON.parse(result);
 		const { success } = data;
 		const { _id, token } = data.visitor;
@@ -24,7 +24,7 @@ async function authGuest(payload, res) {
 	}
 }
 
-const prepareData = (payload) => {
+const normalizeData = (payload) => {
 	const data = payload[payloadRootData];
 	if (!data) {
 		return;
@@ -56,23 +56,6 @@ const prepareData = (payload) => {
 	}
 }
 
-const postRequest = (url, data) => {
-	return new Promise((resolve, reject) => {
-		request.post({
-			headers: { 'content-type': 'application/json' },
-			url,
-			body: JSON.stringify(data)
-		}, (error, response, body) => {
-			if (error || response === null || response === undefined) {
-				return reject({ success: false, message: 'Request failed. Please check your network connection.' });
-			}
-
-			if (response.statusCode != 200) {
-				return reject(JSON.parse(response.body));
-			}
-			resolve(body);
-		});
-	});
+exports.livechatUtils = {
+    authGuest,
 }
-
-exports.authGuest = authGuest

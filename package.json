@@ -1,6 +1,6 @@
 {
-	"name": "Rocket.Chat.Livechat.Caixa",
-	"version": "1.0.0",
+	"name": "Rocket.Chat.Caixa",
+	"version": "0.1.0",
 	"description": "",
 	"main": "server.js",
 	"keywords": [],
